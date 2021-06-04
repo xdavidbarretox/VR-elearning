@@ -1,0 +1,403 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>A-Frame example</title>
+	<script	src="js/SCORM_12_APIWrapper.js"></script>
+	<script	src="js/SCOFunctions.js"></script>
+	<script src="js/aframe-v0.9.2.js"></script>
+	<!--<script	src="js/three.js"></script>-->
+	<!--<script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script>-->
+	<!-- <script src="https://unpkg.com/aframe-look-at-component@0.5.1/dist/aframe-look-at-component.min.js"></script>-->
+
+	<script>
+	//SCORM INTEGRATION
+	loadPage();
+	var   studentName = "!";
+	var   lmsStudentName = doLMSGetValue(  "cmi.core.student_name" );
+
+	if ( lmsStudentName  != "" )
+	{
+	   studentName = " " + lmsStudentName +   "!";
+	}
+	console.log(studentName);
+	</script>
+
+	<script>
+		window.onkeyup = function(e){
+			var key = e.keyCode ? e.keyCode : e.which;
+			if (key == 38)
+				change_video("assets/videos/001-010_1.mp4", true);
+			if (key == 40)
+				change_video("assets/videos/env.mp4", false);
+			}
+	</script>
+
+	<script>
+		var videoId = "#video360";
+		var videos = ["assets/videos/env.mp4", "assets/videos/001-010_1.mp4"];
+		var Mode = "Normal";
+
+		AFRAME.registerComponent('hotspots',{
+			init:function(){
+	    	this.el.addEventListener('reloadspots',function(evt){
+	            //get the entire current spot group and scale it to 0
+	            var currspotgroup=document.getElementById(evt.detail.currspots);
+	            currspotgroup.setAttribute("scale","0 0 0");
+/*
+	            //get the entire new spot group and scale it to 1
+	            var newspotgroup=document.getElementById(evt.detail.newspots);
+	            newspotgroup.setAttribute("scale","1 1 1");
+							*/
+	          });
+	        }
+	      });
+
+	      AFRAME.registerComponent('spot',{
+	        schema:{
+	          linkto:{type:"string",default:""},
+	          spotgroup:{type:"string",default:""}
+	        },
+	        init:function(){
+
+	          //add image source of hotspot icon
+	          this.el.setAttribute("src","#hotspot");
+	          //make the icon look at the camera all the time
+	          this.el.setAttribute("look-at","#cam");
+
+	          var data=this.data;
+
+	          this.el.addEventListener('click',function(){
+	            //set the skybox source to the new image as per the spot
+							/*
+	            var sky = document.querySelector("skybox");
+							sky.setAttribute("src",data.linkto);
+							*/
+						//sky.addEventListener('loaded', function () {console.log("loaded");})
+/*
+							var intervalID = window.setInterval(miFuncion, 500);
+
+							function miFuncion()
+							{
+								console.log("video " + sky.components.material.data.src.currentTime);
+							}
+*/
+							console.log(data.linkto + " VS " + "#point1" + (data.linkto == "#point1"));
+							document.querySelector("#ui_welcome").setAttribute("visible",(data.linkto == "#point1").toString());
+				  			document.querySelector("#Desk").setAttribute("visible",(data.linkto == "#point1").toString());
+				  
+
+							document.querySelector("#quiz").setAttribute("visible",(data.linkto == "#point2").toString());
+
+								var __sphere = document.querySelector("#skybox");
+
+							if(data.linkto != "#point1")
+							{
+								var sound_to_stop = document.querySelector("#sound_0");
+								sound_to_stop.components.sound.stopSound();
+							}
+
+							if(data.linkto == "#point1")
+							{
+								__sphere.setAttribute("rotation", "0 270 0");
+							}
+
+							if(data.linkto == "#point2")
+							{
+								Mode = "Quiz";
+									__sphere.setAttribute("rotation", "0 150 0");
+									change_video(videos[1], true, false);
+							}
+
+	            var spotcomp=document.getElementById("spots");
+	            var currspots=this.parentElement.getAttribute("id");
+	            //create event for spots component to change the spots data
+	            spotcomp.emit('reloadspots',{newspots:data.spotgroup,currspots:currspots});
+	          });
+	        }
+	      });
+
+
+
+				function change_video(__src, __reset, __loop)
+				{
+					var vid = document.querySelector(videoId);
+					var src = vid.attributes[1].nodeValue;
+
+					vid.pause();
+
+					if(__src != src)
+					{
+						vid.setAttribute("src", __src);
+					}
+					if(__loop)
+					{
+						vid.loop = true;
+					}
+					else {
+							vid.loop = false;
+					}
+					if(__reset)
+					{
+						vid.currentTime = 0;
+						vid.play();
+					}
+				}
+
+				function play_video(__play)
+				{
+					var vid = document.querySelector(videoId);
+					if(__play){
+						vid.play();
+					}
+					else {
+						vid.pause();
+					}
+				}
+
+
+				AFRAME.registerComponent('modify-materials', {
+    			init: function () {
+      		// Wait for model to load.
+      		this.el.addEventListener('model-loaded', () => {
+        	// Grab the mesh / scene.
+					//document.querySelector("mac").setAttribute("src", "assets/textures/mac_close.jpg");
+        	const obj = this.el.getObject3D('mesh');
+        	// Go over the submeshes and modify materials we want.
+        	obj.traverse(node => {
+          if (node.name.indexOf('ship') !== -1) {
+            node.material.color.set('red');
+          }
+        });
+      });
+    }
+  });
+
+	    </script>
+
+			<style>
+			#play-button {
+		  position: fixed;
+		  top: calc(50% - 1em);
+		  left: calc(50% - 2em);
+		  width: 4em;
+		  height: 2em;
+		  z-index: 10;
+			}
+
+#pause-button {
+		  position: fixed;
+		  top: calc(60% - 1em);
+		  left: calc(50% - 2em);
+		  width: 4em;
+		  height: 2em;
+		  z-index: 10;
+			}
+			</style>
+
+</head>
+
+<body>
+	<!--
+	<button id="play-button">Play</button>
+	<button id="pause-button">pause</button>
+-->
+	<a-scene>
+		<!--
+		<a-sky src="https://cdn.glitch.com/b870d9ec-1139-44f9-b462-223e4a2c74e7%2Fsechelt.jpg?1490307995926" radius="30" position="" rotation="" scale="" visible="" material="" geometry=""></a-sky>
+		-->
+<!--
+				<a-box id="deleteMe" position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
+      	<a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
+      	<a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
+      	<a-plane id="piso" position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4" src="#texture_mac"></a-plane>-->
+
+		<a-assets>
+			<img id="ui_background" src="assets/ui.png">
+			<img id="hotspot" src="assets/hotspot.png" crossorigin="anonymous">
+			<audio id="sound_welcome" src="assets/welcome.mp3" preload="auto"></audio>
+			<video id="video360" src="assets/videos/env.mp4" autoplay="true" loop="true"></video>
+			
+			<a-asset-item id="computer_maya" src="assets/models/mac_maya/mac_maya2gltf_2.gltf"></a-asset-item>
+			<a-asset-item id="basket_maya" src="assets/models/boteDeBasura.gltf"></a-asset-item>
+			<a-asset-item id="trash_maya" src="assets/models/basura.gltf"></a-asset-item>
+			<a-asset-item id="table_maya" src="assets/models/mesa.gltf"></a-asset-item>
+			<a-asset-item id="cup_maya" src="assets/models/taza.gltf"></a-asset-item>
+			<a-asset-item id="notebook_maya" src="assets/models/notebook.gltf"></a-asset-item>
+			<a-asset-item id="keyboard_maya" src="assets/models/keyboard.gltf"></a-asset-item>
+			<a-asset-item id="mouse_maya" src="assets/models/mouse.gltf"></a-asset-item>
+		</a-assets>
+
+  	<a-videosphere id="skybox" src="#video360" rotation="0 270 0" position="0, 1.7 0" geometry="radius: 10"></a-videosphere>
+	<!--	<a-videosphere id="skybox2" src="#point2" rotation="0 270 0" position="10, 1.7 0" geometry="radius: 10" visible="false"></a-videosphere> -->
+
+		<a-entity id="ui_welcome" position="0 0 0">
+			<a-image src="#ui_background" position="0 1 -4" scale="4 2 0" rotation="0 0 0"></a-image>
+			<a-text id="studentname" position="0 1.7 -3.99" align="center" width="3.3" value="Student Name"></a-text>
+			<a-text position="0 1 -3.99" align="center" width="3.3" value="Welcome to our course on Physical Security. It is optomal to view this course with VR goglgles or glasses. However. you can also take the course on your computer. If you using VR glassware, tap the icon on the lower right of your window to launch this experience."></a-text>
+		</a-entity>
+
+		<a-entity id="quiz" position="0 0 0" rotation="0 300 0" visible="false">
+			<a-image src="#ui_background" position="0 1 -4" scale="4 2 0" rotation="0 0 0"></a-image>
+			<a-text id="quiestion" position="-0.69431 1.697 -3.99" width="3.3" value="Question 1?" text="align: right"></a-text>
+
+			<a-entity id="answere_1" position="-0.69431 1.397 -3.99">
+				<a-image id="back" src="assets/back.png"  scale="3 0.25 1" position="0.71 -0.02 0"></a-image>
+				<a-text  width="3.3" value="Answere 1" text="align: right"></a-text>
+			</a-entity>
+
+			<a-entity id="answere_2" position="-0.69431 1.037 -3.99">
+				<a-image id="back" src="assets/back.png"  scale="3 0.25 1" position="0.71 -0.02 0"></a-image>
+				<a-text  width="3.3" value="Answere 2" text="align: right"></a-text>
+			</a-entity>
+
+			<a-entity id="answere_3" position="-0.69431 0.607 -3.99">
+				<a-image id="back" src="assets/back.png" scale="3 0.25 1" position="0.71 -0.02 0"></a-image>
+				<a-text  width="3.3" value="Answere 3" text="align: right"></a-text>
+			</a-entity>
+		</a-entity>
+
+			<a-entity id="sound_0" sound="src: #sound_welcome; autoplay: true;"></a-entity>
+
+			<a-entity id="cam" camera position="0 1.6 0" look-controls>
+			        <a-entity cursor="fuse:true; maxDistance: 500; timeout:2000"
+												id="cursor-main"
+			                  geometry="primitive:ring; radiusInner:0.03; radiusOuter:0.06; thetaLength: 360; thetaStart: 90;"
+			                  position="0 0 -1.8"
+			                  material="color: #439DC2">
+									<a-animation begin="cursor-fusing" attribute="geometry.thetaLength" fill="forwards" from="360" to="0" easing="ease-in"></a-animation>
+      						<a-animation begin="mouseleave" attribute="geometry.thetaLength" fill="backwards" from="0" to="360" dur="0"></a-animation>
+			        </a-entity>
+							<a-entity
+					      id="cursor-loader"
+					      position="0 0 -2.0001"
+					      geometry="primitive: ring; radiusOuter: 0.06; radiusInner: 0.03;"
+					      material="color: #2ADD2A;">
+					    </a-entity>
+			</a-entity>
+
+<!--
+  		<a-videosphere src="assets/env.mp4"></a-videosphere>
+
+		<a-sound src="src: url(assets/welcome.mp3)" autoplay="true" position="0 0 0" loop="false"></a-sound>
+		-->
+
+<!--
+		<a-entity scale="3.3 3.3 3.3" position="0 1 -3.99" text="align:center; value: Welcome to our course on Physical Security.
+It is optomal to view this course with VR goglgles or glasses. However. you can also take the course on your computer. If you using VR glassware, tap the icon on the lower right of your window to launch this experience."></a-entity>
+-->
+
+		<a-entity id="spots" hotspots>
+				<a-entity id="group-video360" rotation="0 51.5 0">
+					<a-image spot="linkto:#point2; spotgroup:group-point2" position="0 1.5 9"></a-image>
+        </a-entity>
+				<!--
+				<a-entity id="group-Stage_2" rotation="0 51.5 0" visible="false">
+					<a-image spot="linkto:#point3; spotgroup:group-point3" position="0 1.5 9"></a-image>
+        </a-entity>
+
+			-->
+		</a-entity>
+
+			<a-animation attribute="rotation" begin="click" repeat="0" to="0 360 0"></a-animation>
+		</a-entity>
+		
+		<a-entity id="Desk">
+			<a-entity gltf-model="#computer_maya" visible="" scale="2 2 2" position="-4.19919 -0.30997 2.98127" rotation="0 -74.81052635243645 0" id="mac_maya"></a-entity>
+			<a-entity gltf-model="#basket_maya" visible="" scale="2 2 2" position="-5.31167 -1.8 0" rotation="" id="basket"></a-entity>
+			<a-entity id="label_1" position="-2.947 -0.97864 -0.52291" scale="" rotation="0 90 0" visible="false">
+				<a-image id="back" src="assets/back.png" scale="1.01 0.25 1" position="0.22103 -0.02 0" material="" geometry=""></a-image>
+				<a-text width="3.3" value="Trash" text=""></a-text>				
+			</a-entity>
+			
+			<a-entity gltf-model="#trash_maya" visible="" scale="2 2 2" position="-5.31151 -1.8 0" rotation="" id="trash"></a-entity>
+			<a-entity gltf-model="#table_maya" visible="" scale="2 2 2" position="-3.05899 -1.8 1.58365" rotation="0 90 0" id="table"></a-entity>
+			<a-entity gltf-model="#cup_maya" visible="" scale="2 2 2" position="-3.05899 -1.8 1.49775" rotation="0 -124.11182575005841 0" id="cup"></a-entity>
+			<a-entity gltf-model="#notebook_maya" visible="" scale="2 2 2" position="-4.06021 -1.8 2.20347" rotation="0 -124.11182575005841 0" id="notebook"></a-entity>
+			<a-entity gltf-model="#keyboard_maya" visible="" scale="2 2 2" position="-3.125 -1.8 2.64641" rotation="0 -90.77714122934711 0" id="keyboard"></a-entity>
+			<a-entity gltf-model="#mouse_maya" visible="" scale="2 2 2" position="-3.125 -1.8 2.64641" rotation="0 -90.77714122934711 0" id="mouse"></a-entity>
+		</a-entity>
+	</a-scene>
+	<!--
+	<div style="position: absolute; top: 0px; left: 0px; width: 120px; height: 120px; background-color: red;"></div>
+
+	<audio id="myAudio" controls>
+  <source src="assets/welcome.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+-->
+<script>
+/*
+document.getElementById('play-button').addEventListener("click", function(e){
+play_video(true);
+}, false);
+
+document.getElementById('pause-button').addEventListener("click", function(e){
+play_video(false);
+}, false);
+*/
+
+var ans_1 = document.querySelector("#answere_1");
+ans_1.addEventListener("mouseenter", function(){
+	if(Mode == "Quiz"){
+	ans_1.setAttribute("position","-0.69431 1.397 -3.6");
+	change_video("assets/videos/14a_1.mp4", true, false);
+}
+});
+
+ans_1.addEventListener("mouseleave", function(){
+	ans_1.setAttribute("position","-0.69431 1.397 -3.99");
+});
+
+var ans_2 = document.querySelector("#answere_2");
+ans_2.addEventListener("mouseenter", function(){
+		if(Mode == "Quiz"){
+	ans_2.setAttribute("position","-0.69431 1.037 -3.6");
+	change_video("assets/videos/14b_1.mp4", true, false);
+}
+});
+
+ans_2.addEventListener("mouseleave", function(){
+	ans_2.setAttribute("position","-0.69431 1.037 -3.99");
+});
+
+var ans_3 = document.querySelector("#answere_3");
+ans_3.addEventListener("mouseenter", function(){
+		if(Mode == "Quiz"){
+	ans_3.setAttribute("position","-0.69431 0.607 -3.6");
+	change_video("assets/videos/14c_1.mp4", true, false);
+}
+});
+
+ans_3.addEventListener("mouseleave", function(){
+	ans_3.setAttribute("position","-0.69431 0.607 -3.99");
+});
+
+document.querySelector("#studentname").setAttribute("value", lmsStudentName);
+	
+	document.querySelector("#ui_welcome").addEventListener("mouseenter", function (evt) {
+  console.log('This 2D element was clicked!');
+});
+	
+document.querySelector("#mac_maya").addEventListener("mouseenter", function (evt) {
+  console.log('This 2D element was MAC clicked!');
+});
+	
+	
+	var __Trash = document.querySelector("#trash");
+__Trash.addEventListener("mouseenter", function(){
+	document.querySelector("#label_1").setAttribute("visible","true");
+});
+
+__Trash.addEventListener("mouseleave", function(){
+	document.querySelector("#label_1").setAttribute("visible","false");
+});
+	
+	__Trash.addEventListener("click", function(){
+	document.querySelector("#label_1").setAttribute("visible","false");
+	__Trash.setAttribute("visible","false");
+});
+
+</script>
+</body>
+</html>

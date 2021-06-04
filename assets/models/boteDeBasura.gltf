@@ -1,0 +1,219 @@
+{
+    "asset": {
+        "copyright": "(C)2019 barre",
+        "generator": "Maya2glTF V0.9.9 df3632e",
+        "version": "2.0"
+    },
+    "scenes": [
+        {
+            "nodes": [
+                0
+            ]
+        }
+    ],
+    "scene": 0,
+    "nodes": [
+        {
+            "mesh": 0,
+            "name": "trashcain"
+        }
+    ],
+    "meshes": [
+        {
+            "primitives": [
+                {
+                    "attributes": {
+                        "NORMAL": 1,
+                        "POSITION": 2,
+                        "TANGENT": 3,
+                        "TEXCOORD_0": 4
+                    },
+                    "indices": 0,
+                    "mode": 4,
+                    "material": 0
+                }
+            ],
+            "name": "trashcainShape"
+        }
+    ],
+    "accessors": [
+        {
+            "bufferView": 0,
+            "byteOffset": 0,
+            "componentType": 5123,
+            "count": 420,
+            "max": [
+                156
+            ],
+            "min": [
+                0
+            ],
+            "type": "SCALAR"
+        },
+        {
+            "bufferView": 1,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 157,
+            "max": [
+                0.997596800327301,
+                1.0,
+                0.997596800327301
+            ],
+            "min": [
+                -0.9975968599319458,
+                -0.10324105620384217,
+                -0.9975969195365906
+            ],
+            "type": "VEC3"
+        },
+        {
+            "bufferView": 1,
+            "byteOffset": 1884,
+            "componentType": 5126,
+            "count": 157,
+            "max": [
+                1.3130006790161133,
+                0.29285913705825808,
+                0.126678004860878
+            ],
+            "min": [
+                1.0596446990966797,
+                0.012089163064956664,
+                -0.126678004860878
+            ],
+            "type": "VEC3"
+        },
+        {
+            "bufferView": 2,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 157,
+            "max": [
+                0.9959925413131714,
+                0.9712514877319336,
+                0.9985741376876832,
+                1.0
+            ],
+            "min": [
+                -0.7926568984985352,
+                -0.9712330102920532,
+                -0.863096296787262,
+                -1.0
+            ],
+            "type": "VEC4"
+        },
+        {
+            "bufferView": 3,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 157,
+            "max": [
+                0.4823548495769501,
+                0.48672860860824587
+            ],
+            "min": [
+                0.009143770672380925,
+                0.015619516372680664
+            ],
+            "type": "VEC2"
+        }
+    ],
+    "materials": [
+        {
+            "pbrMetallicRoughness": {
+                "baseColorFactor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "baseColorTexture": {
+                    "index": 0
+                },
+                "metallicFactor": 0.5,
+                "roughnessFactor": 0.5,
+                "metallicRoughnessTexture": {
+                    "index": 1
+                }
+            },
+            "emissiveFactor": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "normalTexture": {
+                "index": 2
+            },
+            "name": "GLSLShader1"
+        }
+    ],
+    "textures": [
+        {
+            "sampler": 0,
+            "source": 0
+        },
+        {
+            "sampler": 0,
+            "source": 1
+        },
+        {
+            "sampler": 0,
+            "source": 2
+        }
+    ],
+    "images": [
+        {
+            "uri": "atlas.png"
+        },
+        {
+            "uri": "atlas_specular.jpg"
+        },
+        {
+            "uri": "atlas_np.jpg"
+        }
+    ],
+    "samplers": [
+        {
+            "magFilter": 9729,
+            "minFilter": 9987,
+            "wrapS": 10497,
+            "wrapT": 10497
+        }
+    ],
+    "bufferViews": [
+        {
+            "buffer": 0,
+            "byteOffset": 7536,
+            "byteLength": 840,
+            "target": 34963
+        },
+        {
+            "buffer": 0,
+            "byteOffset": 2512,
+            "byteLength": 3768,
+            "byteStride": 12,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteOffset": 0,
+            "byteLength": 2512,
+            "byteStride": 16,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteOffset": 6280,
+            "byteLength": 1256,
+            "byteStride": 8,
+            "target": 34962
+        }
+    ],
+    "buffers": [
+        {
+            "byteLength": 8376,
+            "uri": "boteDeBasura0.bin"
+        }
+    ]
+}

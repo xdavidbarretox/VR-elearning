@@ -1,0 +1,215 @@
+{
+    "asset": {
+        "copyright": "(C)2019 barre",
+        "generator": "Maya2glTF V0.9.9 df3632e",
+        "version": "2.0"
+    },
+    "scenes": [
+        {
+            "nodes": [
+                0
+            ]
+        }
+    ],
+    "scene": 0,
+    "nodes": [
+        {
+            "children": [
+                1
+            ],
+            "translation": [
+                0.0,
+                0.0,
+                -0.2962897419929505
+            ],
+            "name": "mac:mac_air"
+        },
+        {
+            "mesh": 0,
+            "translation": [
+                -0.0,
+                -0.0,
+                0.2962897419929505
+            ],
+            "name": "mac:mac_air:PIV"
+        }
+    ],
+    "meshes": [
+        {
+            "primitives": [
+                {
+                    "attributes": {
+                        "NORMAL": 1,
+                        "POSITION": 2,
+                        "TANGENT": 3,
+                        "TEXCOORD_0": 4
+                    },
+                    "indices": 0,
+                    "mode": 4,
+                    "material": 0
+                }
+            ],
+            "name": "mac:mac_airShape"
+        }
+    ],
+    "accessors": [
+        {
+            "bufferView": 0,
+            "byteOffset": 0,
+            "componentType": 5123,
+            "count": 474,
+            "max": [
+                315
+            ],
+            "min": [
+                0
+            ],
+            "type": "SCALAR"
+        },
+        {
+            "bufferView": 1,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 316,
+            "max": [
+                0.9999985694885254,
+                0.9994133710861206,
+                0.188741996884346
+            ],
+            "min": [
+                -0.9999985694885254,
+                -0.982025146484375,
+                -0.9998552203178406
+            ],
+            "type": "VEC3"
+        },
+        {
+            "bufferView": 1,
+            "byteOffset": 3792,
+            "componentType": 5126,
+            "count": 316,
+            "max": [
+                0.32488948106765749,
+                0.5546281933784485,
+                -0.19305923581123353
+            ],
+            "min": [
+                -0.32488948106765749,
+                -0.0005328059196472168,
+                -0.39952024817466738
+            ],
+            "type": "VEC3"
+        },
+        {
+            "bufferView": 2,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 316,
+            "max": [
+                0.8922563195228577,
+                0.9285228848457336,
+                0.9968199133872986,
+                1.0
+            ],
+            "min": [
+                -0.9999975562095642,
+                -0.9997276067733764,
+                -0.999304175376892,
+                1.0
+            ],
+            "type": "VEC4"
+        },
+        {
+            "bufferView": 3,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 316,
+            "max": [
+                0.9795178174972534,
+                0.9934434294700624
+            ],
+            "min": [
+                0.017981261014938356,
+                0.008867025375366211
+            ],
+            "type": "VEC2"
+        }
+    ],
+    "materials": [
+        {
+            "pbrMetallicRoughness": {
+                "baseColorFactor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "baseColorTexture": {
+                    "index": 0
+                },
+                "metallicFactor": 0.4882352948188782,
+                "roughnessFactor": 0.5
+            },
+            "emissiveFactor": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "name": "GLSLShader1"
+        }
+    ],
+    "textures": [
+        {
+            "sampler": 0,
+            "source": 0
+        }
+    ],
+    "images": [
+        {
+            "uri": "mac_open.jpg"
+        }
+    ],
+    "samplers": [
+        {
+            "magFilter": 9729,
+            "minFilter": 9987,
+            "wrapS": 10497,
+            "wrapT": 10497
+        }
+    ],
+    "bufferViews": [
+        {
+            "buffer": 0,
+            "byteOffset": 15168,
+            "byteLength": 948,
+            "target": 34963
+        },
+        {
+            "buffer": 0,
+            "byteOffset": 5056,
+            "byteLength": 7584,
+            "byteStride": 12,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteOffset": 0,
+            "byteLength": 5056,
+            "byteStride": 16,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteOffset": 12640,
+            "byteLength": 2528,
+            "byteStride": 8,
+            "target": 34962
+        }
+    ],
+    "buffers": [
+        {
+            "byteLength": 16116,
+            "uri": "mac_maya2gltf_20.bin"
+        }
+    ]
+}

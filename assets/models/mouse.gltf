@@ -1,0 +1,215 @@
+{
+    "asset": {
+        "copyright": "(C)2019 barre",
+        "generator": "Maya2glTF V0.9.9 df3632e",
+        "version": "2.0"
+    },
+    "scenes": [
+        {
+            "nodes": [
+                0
+            ]
+        }
+    ],
+    "scene": 0,
+    "nodes": [
+        {
+            "children": [
+                1
+            ],
+            "translation": [
+                -0.3203617334365845,
+                0.7528713345527649,
+                -0.2015349268913269
+            ],
+            "name": "mouse_cropped:mouse1"
+        },
+        {
+            "mesh": 0,
+            "translation": [
+                0.29421302676200869,
+                -0.7534629702568054,
+                0.2280684858560562
+            ],
+            "name": "mouse_cropped:mouse1:PIV"
+        }
+    ],
+    "meshes": [
+        {
+            "primitives": [
+                {
+                    "attributes": {
+                        "NORMAL": 1,
+                        "POSITION": 2,
+                        "TANGENT": 3,
+                        "TEXCOORD_0": 4
+                    },
+                    "indices": 0,
+                    "mode": 4,
+                    "material": 0
+                }
+            ],
+            "name": "mouse_cropped:mouse1Shape"
+        }
+    ],
+    "accessors": [
+        {
+            "bufferView": 0,
+            "byteOffset": 0,
+            "componentType": 5123,
+            "count": 840,
+            "max": [
+                571
+            ],
+            "min": [
+                0
+            ],
+            "type": "SCALAR"
+        },
+        {
+            "bufferView": 1,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 572,
+            "max": [
+                0.9976726770401,
+                0.9951382279396056,
+                0.8976491093635559
+            ],
+            "min": [
+                -0.9976726770401,
+                -0.9999998211860656,
+                -0.897699773311615
+            ],
+            "type": "VEC3"
+        },
+        {
+            "bufferView": 1,
+            "byteOffset": 6864,
+            "componentType": 5126,
+            "count": 572,
+            "max": [
+                -0.2595460116863251,
+                0.7664539813995361,
+                -0.15938399732112885
+            ],
+            "min": [
+                -0.3288800120353699,
+                0.7404720187187195,
+                -0.2967529892921448
+            ],
+            "type": "VEC3"
+        },
+        {
+            "bufferView": 2,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 572,
+            "max": [
+                1.0,
+                0.9976470470428468,
+                0.7863123416900635,
+                1.0
+            ],
+            "min": [
+                -0.999999701976776,
+                -0.9976428151130676,
+                -0.7860351204872131,
+                1.0
+            ],
+            "type": "VEC4"
+        },
+        {
+            "bufferView": 3,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 572,
+            "max": [
+                0.6625139713287354,
+                0.1138271689414978
+            ],
+            "min": [
+                0.5320640802383423,
+                0.007595956325531006
+            ],
+            "type": "VEC2"
+        }
+    ],
+    "materials": [
+        {
+            "pbrMetallicRoughness": {
+                "baseColorFactor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "baseColorTexture": {
+                    "index": 0
+                },
+                "metallicFactor": 0.5,
+                "roughnessFactor": 0.5
+            },
+            "emissiveFactor": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "name": "GLSLShader4"
+        }
+    ],
+    "textures": [
+        {
+            "sampler": 0,
+            "source": 0
+        }
+    ],
+    "images": [
+        {
+            "uri": "atlas.png"
+        }
+    ],
+    "samplers": [
+        {
+            "magFilter": 9729,
+            "minFilter": 9987,
+            "wrapS": 10497,
+            "wrapT": 10497
+        }
+    ],
+    "bufferViews": [
+        {
+            "buffer": 0,
+            "byteOffset": 27456,
+            "byteLength": 1680,
+            "target": 34963
+        },
+        {
+            "buffer": 0,
+            "byteOffset": 9152,
+            "byteLength": 13728,
+            "byteStride": 12,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteOffset": 0,
+            "byteLength": 9152,
+            "byteStride": 16,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteOffset": 22880,
+            "byteLength": 4576,
+            "byteStride": 8,
+            "target": 34962
+        }
+    ],
+    "buffers": [
+        {
+            "byteLength": 29136,
+            "uri": "mouse0.bin"
+        }
+    ]
+}

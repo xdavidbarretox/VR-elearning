@@ -1,0 +1,215 @@
+{
+    "asset": {
+        "copyright": "(C)2019 barre",
+        "generator": "Maya2glTF V0.9.9 df3632e",
+        "version": "2.0"
+    },
+    "scenes": [
+        {
+            "nodes": [
+                0
+            ]
+        }
+    ],
+    "scene": 0,
+    "nodes": [
+        {
+            "children": [
+                1
+            ],
+            "translation": [
+                0.00021100000594742596,
+                0.7531205415725708,
+                -0.15075741708278657
+            ],
+            "name": "keyboard1"
+        },
+        {
+            "mesh": 0,
+            "translation": [
+                -0.00021100000594742596,
+                -0.7556544542312622,
+                0.08567550033330918
+            ],
+            "name": "keyboard1:PIV"
+        }
+    ],
+    "meshes": [
+        {
+            "primitives": [
+                {
+                    "attributes": {
+                        "NORMAL": 1,
+                        "POSITION": 2,
+                        "TANGENT": 3,
+                        "TEXCOORD_0": 4
+                    },
+                    "indices": 0,
+                    "mode": 4,
+                    "material": 0
+                }
+            ],
+            "name": "keyboard1Shape"
+        }
+    ],
+    "accessors": [
+        {
+            "bufferView": 0,
+            "byteOffset": 0,
+            "componentType": 5123,
+            "count": 228,
+            "max": [
+                171
+            ],
+            "min": [
+                0
+            ],
+            "type": "SCALAR"
+        },
+        {
+            "bufferView": 1,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 172,
+            "max": [
+                1.0,
+                0.9957267045974731,
+                0.9857164025306702
+            ],
+            "min": [
+                -1.0,
+                -0.9957870244979858,
+                -0.9957345128059388
+            ],
+            "type": "VEC3"
+        },
+        {
+            "bufferView": 1,
+            "byteOffset": 2064,
+            "componentType": 5126,
+            "count": 172,
+            "max": [
+                0.23215800523757938,
+                0.7678599953651428,
+                0.02172200009226799
+            ],
+            "min": [
+                -0.2317360043525696,
+                0.7434489727020264,
+                -0.19307300448417664
+            ],
+            "type": "VEC3"
+        },
+        {
+            "bufferView": 2,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 172,
+            "max": [
+                1.0,
+                0.09231705218553545,
+                0.9957333207130432,
+                1.0
+            ],
+            "min": [
+                -1.0,
+                -0.09229710698127748,
+                -0.9957333207130432,
+                1.0
+            ],
+            "type": "VEC4"
+        },
+        {
+            "bufferView": 3,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 172,
+            "max": [
+                0.9902681112289428,
+                0.3492310047149658
+            ],
+            "min": [
+                0.6774523258209229,
+                0.008375763893127442
+            ],
+            "type": "VEC2"
+        }
+    ],
+    "materials": [
+        {
+            "pbrMetallicRoughness": {
+                "baseColorFactor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "baseColorTexture": {
+                    "index": 0
+                },
+                "metallicFactor": 0.5,
+                "roughnessFactor": 0.5
+            },
+            "emissiveFactor": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "name": "GLSLShader3"
+        }
+    ],
+    "textures": [
+        {
+            "sampler": 0,
+            "source": 0
+        }
+    ],
+    "images": [
+        {
+            "uri": "atlas.png"
+        }
+    ],
+    "samplers": [
+        {
+            "magFilter": 9729,
+            "minFilter": 9987,
+            "wrapS": 10497,
+            "wrapT": 10497
+        }
+    ],
+    "bufferViews": [
+        {
+            "buffer": 0,
+            "byteOffset": 8256,
+            "byteLength": 456,
+            "target": 34963
+        },
+        {
+            "buffer": 0,
+            "byteOffset": 2752,
+            "byteLength": 4128,
+            "byteStride": 12,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteOffset": 0,
+            "byteLength": 2752,
+            "byteStride": 16,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteOffset": 6880,
+            "byteLength": 1376,
+            "byteStride": 8,
+            "target": 34962
+        }
+    ],
+    "buffers": [
+        {
+            "byteLength": 8712,
+            "uri": "keyboard0.bin"
+        }
+    ]
+}
